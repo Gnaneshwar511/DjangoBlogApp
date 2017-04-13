@@ -21,12 +21,12 @@
 							</div>
 							<h1><a href="">{{ post.title }}</a></h1>
 							<p>{{ post.text|linebreaksbr }}</p><span style="background-color:yellow">Watson Says:</span>
-							<p>Anger :{{ anger }} | 
-							Disgust :{{ disgust }} |
-							Fear :{{ fear }} |
-							Joy :{{ joy }} |
-							Sad :{{ sad }}</p>
-							<p>{{ tText }}</p>
+							<p>Anger :{{ post.angerScore }} | 
+							Disgust :{{ post.disgustScore }} |
+							Fear :{{ post.fearScore }} |
+							Joy :{{ post.joyScore }} |
+							Sad :{{ post.sadScore }}</p>
+							<p>{{ post.translatedText }}</p>
 						</div>
 					{% endfor %}
 					{{j}}

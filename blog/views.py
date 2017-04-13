@@ -24,15 +24,15 @@ def post_list(request):
         j = json.loads(data);
         post.info = j['document_tone']['tone_categories'][0]['tones']
         #post.info = json.dumps(post.info);
-        angerScore = post.info[0]['score']
-        disgustScore = post.info[1]['score']
-        fearScore = post.info[2]['score']
-        joyScore = post.info[3]['score']
-        sadScore = post.info[3]['score']
-        print(post.info[0]['tone_name'])
+        post.angerScore = post.info[0]['score']
+        post.disgustScore = post.info[1]['score']
+        post.fearScore = post.info[2]['score']
+        post.joyScore = post.info[3]['score']
+        post.sadScore = post.info[4]['score']
+        #print(post.info[0]['tone_name'])
         translation = language_translator.translate(
         text=post.text,
         source='en',
         target='es')
-        translatedText = json.dumps(translation, indent=2, ensure_ascii=False)
-    return render(request, 'blog/post_list.html', {'posts': posts, 'anger': angerScore, 'disgust': disgustScore, 'fear': fearScore, 'joy': joyScore, 'sad': sadScore, 'tText': translatedText})
+        post.translatedText = json.dumps(translation, indent=2, ensure_ascii=False)
+    return render(request, 'blog/post_list.html', {'posts': posts})
